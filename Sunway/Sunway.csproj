@@ -119,6 +119,7 @@
     </Compile>
     <EmbeddedResource Include="加载窗体.resx">
       <DependentUpon>加载窗体.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="模板设置.resx">
       <DependentUpon>模板设置.cs</DependentUpon>
