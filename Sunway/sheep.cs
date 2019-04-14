@@ -22,7 +22,6 @@ namespace Sunway
         private static readonly ushort out_NOPRODUCT_bit = 12;
         public static string exceptionFile = "exceptionLog.txt";
         public static Form1 f1;
-        public static CogToolGroup group;
         public static CogToolBlock block;
         public static string datapath = Directory.GetCurrentDirectory() + @"\data\";
         public static double X1, X2, X3, X4, Y;
@@ -44,6 +43,7 @@ namespace Sunway
             {
                 var a = IOC0640.ioc_board_init();
                 if (a > 0) f1.textBox2.AppendText("IO卡打开成功\r\n");
+
             }
             catch
             {
@@ -64,8 +64,7 @@ namespace Sunway
         {
             try
             {
-                group = CogSerializer.LoadObjectFromFile(vppFilePath) as CogToolGroup;
-                block = group.Tools[0] as CogToolBlock;
+                block = (CogToolBlock)CogSerializer.LoadObjectFromFile(vppFilePath);
                 f1.textBox2.AppendText("工具组加载成功\r\n");
             }
             catch (Exception x)
@@ -78,7 +77,7 @@ namespace Sunway
         {
             try
             {
-                CogSerializer.SaveObjectToFile(group, vppFilePath);
+                CogSerializer.SaveObjectToFile(block, vppFilePath);
                 LoadVpp();
                 MessageBox.Show("保存成功");
             }

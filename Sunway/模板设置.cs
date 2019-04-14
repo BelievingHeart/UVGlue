@@ -24,7 +24,7 @@ namespace Sunway
 
         private void 模板设置_Load(object sender, EventArgs e)
         {
-          cogToolGroupEditV21.Subject = sheep.group;
+          cogToolGroupEditV21.Subject = sheep.block;
         }
     }
 }
