@@ -249,15 +249,20 @@ namespace Sunway
 
         public static void run()
         {
-            block.Run();
+            
 
-            f1.cogRecordDisplay1.StaticGraphics.Clear();
-            f1.cogRecordDisplay1.InteractiveGraphics.Clear();
-            f1.cogRecordDisplay1.Image = null;
+            f1.Invoke(new Action(() =>
+            {
+                block.Run();
 
-            var icg = block.CreateLastRunRecord();
-            f1.cogRecordDisplay1.Record = icg.SubRecords["CogIPOneImageTool1.OutputImage"];
-            f1.cogRecordDisplay1.AutoFit = true;
+                f1.cogRecordDisplay1.StaticGraphics.Clear();
+                f1.cogRecordDisplay1.InteractiveGraphics.Clear();
+                f1.cogRecordDisplay1.Image = null;
+
+                var icg = block.CreateLastRunRecord();
+                f1.cogRecordDisplay1.Record = icg.SubRecords["CogIPOneImageTool1.OutputImage"];
+                f1.cogRecordDisplay1.AutoFit = true;
+            }));
 
             del del2 = Light;
 
